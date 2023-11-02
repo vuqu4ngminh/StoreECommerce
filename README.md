@@ -13,7 +13,3 @@ A simple SERN project
 - [ ] Smartphone management for Administrator
 - [ ] User management for Administrator
 - [ ] Administrator Information management
-
-## Contributors:
-* vuqu4ngminh
-* H1epVu
