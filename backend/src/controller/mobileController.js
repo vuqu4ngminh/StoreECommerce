@@ -2,7 +2,7 @@ import connection from '../database/connection'
 
 // get all mobile
 const getAllMobile = async (req, res) => {
-    const [rows] = await connection.execute("SELECT * FROM `mobiles`");
+    const [rows] = await connection.execute("SELECT * FROM mobiles");
     return res.status(200).json({
         data: rows,
     });
@@ -10,7 +10,7 @@ const getAllMobile = async (req, res) => {
 // get mobile by id
 const getMobileById = async (req, res) => {
     let id = req.params.id
-    const [rows] = await connection.execute("SELECT * FROM `mobiles`");
+    const [rows] = await connection.execute("SELECT * FROM mobiles WHERE id = ?",[id]);
     return res.status(200).json({
         data: rows,
     });
@@ -29,7 +29,7 @@ const updateMobile = async (req, res) => {
 const addMobile = async (req, res) => {
     let {name, description, price, imageUrl, status } = req.body;
     await connection.execute(`
-    INSERT INTO mobiles (id, name, description, price, imageUrl, status) VALUES (?,?,?,?,?)
+    INSERT INTO mobiles (name, description, price, imageUrl, status) VALUES (?,?,?,?,?)
     `, [name, description, price, imageUrl, status])
     return res.status(200).json({
         message: "ok",
