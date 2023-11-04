@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import initMobileAPIRoute from "./api/mobileApi"
+import initOrderAPIRoute from "./api/orderApi"
+import initUserAPIRoute from "./api/userApi"
 
 require('dotenv').config()
 const app = express();
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
 })
 
 initMobileAPIRoute(app)
+initOrderAPIRoute(app)
+initUserAPIRoute(app)
 app.listen(PORT, () => {
     console.log(`Live at http://localhost:${PORT}`);
 });
