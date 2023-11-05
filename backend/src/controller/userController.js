@@ -15,7 +15,7 @@ const getAllUser = async (req,res) => {
         data: rows,
     });
 }
-// add user
+// add user (sign up)
 const addUser = async (req,res) => {
     let {name,phone,email,address,password,role} = req.body
     await connection.execute('INSERT INTO users (name,phone,email,address,password,role) VALUES (?,?,?,?,?,?)',[name,phone,email,address,password,role])
@@ -39,7 +39,19 @@ const deleteUser = async (req,res) => {
         message: 'ok',
     });
 }
+// login
+const login = async (req, res) => {
+    let {username,password} = req.body
+    const [rows] = await connection.execute("SELECT * FROM users WHERE name = ? AND password = ?",[username,password])
+    if(rows.length == 1){
+        req.session.user = rows[0].role
+    }
+    return res.status(200).json({
+        data: rows,
+    });
+}
 module.exports = {
+    login,
     getUserById,
     getAllUser,
     addUser,
