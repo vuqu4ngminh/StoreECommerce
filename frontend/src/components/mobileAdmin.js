@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class mobileAdmin {
+export class MobileAdmin extends Component {
   render() {
     return (
       <div>mobileAdmin</div>
@@ -8,4 +8,4 @@ export class mobileAdmin {
   }
 }
 
-export default mobileAdmin
+export default MobileAdmin

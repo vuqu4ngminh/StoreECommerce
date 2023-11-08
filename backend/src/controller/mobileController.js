@@ -3,9 +3,7 @@ import connection from '../database/connection'
 // get all mobile
 const getAllMobile = async (req, res) => {
     const [rows] = await connection.execute("SELECT * FROM mobiles");
-    return res.status(200).json({
-        data: rows,
-    });
+    return res.status(200).send(rows);
 }
 // get mobile by id
 const getMobileById = async (req, res) => {
