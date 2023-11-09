@@ -1,0 +1,79 @@
+.app {
+    .home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* Căn giữa theo chiều ngang */
+        align-items: center;
+        /* Căn giữa theo chiều dọc */
+
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /* Cài đặt khoảng cách giữa các sản phẩm */
+
+            .product-card {
+                flex-basis: calc(20% - 1rem);
+                /* Để hiển thị 4 sản phẩm trên mỗi hàng (25% - khoảng cách giữa các sản phẩm) */
+                margin-bottom: 1rem;
+                /* Để thêm khoảng cách giữa các hàng sản phẩm */
+            }
+        }
+
+        .btn-form {
+            display: flex;
+            justify-content: space-between; // Căn nút sang hai bên lề
+            width: 100%; // Đảm bảo nút nằm trong toàn bộ chiều rộng của form
+        }
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Đảm bảo chiều cao của màn hình */
+        width: 100%; /* Đảm bảo chiều rộng của màn hình */
+
+        form {
+            max-width: 330px;
+            padding: 1rem;
+
+
+            .form-floating{
+                margin-block: 15px;
+            }
+
+            span{
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+    }
+
+    .register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Đảm bảo chiều cao của màn hình */
+        width: 100%; /* Đảm bảo chiều rộng của màn hình */
+
+        form {
+            max-width: 330px;
+            padding: 1rem;
+
+
+            .form-floating{
+                margin-block: 15px;
+            }
+
+            span{
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+    }
+}

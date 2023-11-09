@@ -39,10 +39,10 @@ const deleteUser = async (req,res) => {
         message: 'ok',
     });
 }
-// login
+// login by email
 const login = async (req, res) => {
-    let {username,password} = req.body
-    const [rows] = await connection.execute("SELECT * FROM users WHERE name = ? AND password = ?",[username,password])
+    let {email,password} = req.body
+    const [rows] = await connection.execute("SELECT * FROM users WHERE name = ? AND password = ?",[email,password])
     if(rows.length == 1){
         req.session.user = rows[0].role
     }
