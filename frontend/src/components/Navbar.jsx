@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function NavScroll() {
+    const navigate = useNavigate()
     const [id,setId] = useState(null)
+    const login = () => {
+        navigate('/login')
+    }
+    const logout = () => {
+        localStorage.removeItem('id');
+        navigate('/')
+        window.location.reload();
+    }
     useEffect(() => {
         setId(localStorage.getItem('id'))
     },[])
@@ -24,12 +33,12 @@ function NavScroll() {
                         </li>
                     </ul>
                     {!id ? (
-                        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-                            <Link class="btn btn-light" to="/login">Đăng nhập</Link>
+                        <div class="d-lg-flex col-lg-3 justify-content-lg-end" onClick={login}>
+                            <button class="btn btn-light">Đăng nhập</button>
                         </div>
                     ) : (
-                        <div class="d-lg-flex col-lg-3 justify-content-lg-end" onClick={() => { localStorage.removeItem('id'); }}>
-                            <Link class="btn btn-danger" to="/">Đăng xuất</Link>
+                        <div class="d-lg-flex col-lg-3 justify-content-lg-end" onClick={logout}>
+                            <button class="btn btn-danger">Đăng xuất</button>
                         </div>
                     )}
                 </div>
