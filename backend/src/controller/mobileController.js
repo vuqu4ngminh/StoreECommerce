@@ -9,9 +9,7 @@ const getAllMobile = async (req, res) => {
 const getMobileById = async (req, res) => {
     let id = req.params.id
     const [rows] = await connection.execute("SELECT * FROM mobiles WHERE id = ?",[id]);
-    return res.status(200).json({
-        data: rows,
-    });
+    return res.status(200).send(rows)
 }
 // update mobile
 const updateMobile = async (req, res) => {

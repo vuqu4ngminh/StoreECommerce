@@ -4,16 +4,12 @@ import connection from '../database/connection'
 const getUserById = async (req,res) => {
     let id = req.params.id
     const [rows] = await connection.execute('SELECT * FROM users WHERE id = ?',[id])
-    return res.status(200).json({
-        data: rows,
-    });
+    return res.status(200).send(rows)
 }
 // get all users
 const getAllUser = async (req,res) => {
     const [rows] = await connection.execute('SELECT * FROM users')
-    return res.status(200).json({
-        data: rows,
-    });
+    return res.status(200).send(rows)
 }
 // add user (sign up)
 const addUser = async (req,res) => {
@@ -42,13 +38,11 @@ const deleteUser = async (req,res) => {
 // login by email
 const login = async (req, res) => {
     let {email,password} = req.body
-    const [rows] = await connection.execute("SELECT * FROM users WHERE name = ? AND password = ?",[email,password])
+    const [rows] = await connection.execute("SELECT * FROM users WHERE email = ? AND password = ?",[email,password])
     if(rows.length == 1){
         req.session.user = rows[0].role
     }
-    return res.status(200).json({
-        data: rows,
-    });
+    return res.status(200).send(rows)
 }
 module.exports = {
     login,

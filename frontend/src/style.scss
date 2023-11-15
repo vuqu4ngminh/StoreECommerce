@@ -34,19 +34,21 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh; /* Đảm bảo chiều cao của màn hình */
-        width: 100%; /* Đảm bảo chiều rộng của màn hình */
+        height: 100vh;
+        /* Đảm bảo chiều cao của màn hình */
+        width: 100%;
+        /* Đảm bảo chiều rộng của màn hình */
 
         form {
             max-width: 330px;
             padding: 1rem;
 
 
-            .form-floating{
+            .form-floating {
                 margin-block: 15px;
             }
 
-            span{
+            span {
                 font-size: 12px;
                 text-align: center;
             }
@@ -58,22 +60,43 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh; /* Đảm bảo chiều cao của màn hình */
-        width: 100%; /* Đảm bảo chiều rộng của màn hình */
+        height: 100vh;
+        /* Đảm bảo chiều cao của màn hình */
+        width: 100%;
+        /* Đảm bảo chiều rộng của màn hình */
 
         form {
             max-width: 330px;
             padding: 1rem;
 
 
-            .form-floating{
+            .form-floating {
                 margin-block: 15px;
             }
 
-            span{
+            span {
                 font-size: 12px;
                 text-align: center;
             }
         }
+    }
+
+    .detail {
+
+        input {
+            max-width: 3rem
+        }
+
+    }
+
+    .cart {
+
+        padding-top: 5rem;
+
+    }
+
+    .adminPage {
+        
+        padding-top: 5rem;
     }
 }
