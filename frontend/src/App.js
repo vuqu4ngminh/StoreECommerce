@@ -15,6 +15,9 @@ import User from "./pages/admin/User";
 import Statistics from "./pages/admin/Statistics";
 import AddUser from "./pages/admin/AddUser";
 import UpdateUser from "./pages/admin/UpdateUser";
+import AddMobile from "./pages/admin/AddMobile";
+import UpdateMobile from "./pages/admin/UpdateMobile";
+import DetailOrder from "./pages/admin/DetailOrder";
 import NotFound from "./components/NotFound";
 import AdminLayout from "./pages/admin/AdminLayout";
 import UserLayout from './pages/client/UserLayout';
@@ -92,8 +95,20 @@ const router = createBrowserRouter([
         element: <Mobile />
       },
       {
+        path: 'mobile/add',
+        element: <AddMobile />
+      },
+      {
+        path: 'mobile/update/:id',
+        element: <UpdateMobile />
+      },
+      {
         path: 'order',
         element: <Order />
+      },
+      {
+        path: 'order/detail/:orderId',
+        element: <DetailOrder />
       },
       {
         path: "*",

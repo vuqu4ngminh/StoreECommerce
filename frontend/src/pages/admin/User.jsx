@@ -30,6 +30,7 @@ const User = () => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Role</th>
                         <th className='d-flex justify-content-center'><Link to={'/admin/user/add'} className='btn btn-success'>Add User</Link></th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@ const User = () => {
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
                             <td>{user.address}</td>
+                            <td>{user.role}</td>
                             <td style={{ display: 'flex', justifyContent: 'center' }}>
                                 <Link to={`/admin/user/update/${user.id}`} className='btn btn-primary'>Edit</Link>{' '}
                                 <Button onClick={() => deleteUser(user.id)} variant="danger">Delete</Button>

@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavScroll from '../../components/Navbar';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserDetail = () => {
     const navigate = useNavigate()
     const id = localStorage.getItem('id')
     const [user, setUser] = useState([])
+    const deleteUser = async () => {
+        await axios.post(`http://localhost:8282/api/user/delete/${id}`)
+        localStorage.removeItem('id')
+        toast.success('Xóa Thành Công')
+        setTimeout(() => window.location.reload(), 1500);
+    }
     try {
         useEffect(() => {
             const fetchData = async (id) => {
@@ -28,8 +36,7 @@ const UserDetail = () => {
                                         className="rounded-circle img-fluid" style={{ width: "150px" }} />
                                     <h5 className="my-3">{user[0].name}</h5>
                                     <div className="d-flex justify-content-center mb-2">
-                                        <button type="button" className="btn btn-primary">Cập nhật thông tin</button>
-                                        <button type="button" className="btn btn-danger ms-1">Đóng tài khoản</button>
+                                        <button type="button" className="btn btn-danger ms-1" onClick={() => deleteUser()}>Đóng tài khoản</button>
                                     </div>
                                 </div>
                             </div>
@@ -75,35 +82,6 @@ const UserDetail = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="card">
-                        <h3 className='mt-3 mb-3'>Đơn hàng đã đặt:</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Email</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>July</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </>

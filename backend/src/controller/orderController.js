@@ -13,6 +13,17 @@ const getCurrentDate = () => {
     return currentDate.toISOString().slice(0, 19).replace('T', ' ');
 }
 
+// get order by userId
+const getOrderByUserId = async (req, res) => {
+    let id = req.params.id
+    const [rows] = await connection.execute(`
+        SELECT users.name, users.phone, users.address, orders.*
+        FROM orders
+        INNER JOIN users ON orders.userId = users.id
+        WHERE orders.id = ?;
+    `, [id])
+    return res.status(200).send(rows)
+}
 // get order by id
 const getOrderById = async (req, res) => {
     let id = req.params.id
@@ -22,19 +33,18 @@ const getOrderById = async (req, res) => {
         INNER JOIN orders ON orders_mobiles.orderId = orders.id
         INNER JOIN mobiles ON orders_mobiles.mobileId = mobiles.id
         WHERE orders_mobiles.orderId = ?;
-    `,[id])
+    `, [id])
     return res.status(200).send(rows)
 }
 // get all order
 const getAllOrder = async (req, res) => {
-    try {
-        let userId = req.body.userId
-        const [rows] = await connection.execute('SELECT * FROM orders WHERE userId = ? ORDER BY orderDate DESC', [userId])
-        return res.status(200).send(rows)
-    } catch (error) {
-        const [rows] = await connection.execute('SELECT * FROM orders ORDER BY orderDate DESC')
-        return res.status(200).send(rows)
-    }
+    const [rows] = await connection.execute(`
+        SELECT orders.*, users.name
+        FROM orders 
+        INNER JOIN users ON orders.userId = users.id
+        ORDER BY orderDate DESC
+    `)
+    return res.status(200).send(rows)
 }
 // update order
 const updateOrder = async (req, res) => {
@@ -68,5 +78,6 @@ module.exports = {
     getOrderById,
     getAllOrder,
     updateOrder,
-    addOrder
+    addOrder,
+    getOrderByUserId
 }
