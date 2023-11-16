@@ -38,8 +38,12 @@ const shoppingCartSlice = createSlice({
       // Lưu trạng thái giỏ hàng vào localStorage
       saveCartToLocalStorage(state.cartItems);
     },
+    clearCart: (state) => {
+      state.cartItems = []
+      localStorage.removeItem('cart');
+    }
   },
 });
 
-export const { addToCart, removeFromCart } = shoppingCartSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;
