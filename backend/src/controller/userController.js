@@ -29,7 +29,7 @@ const updateUser = async (req,res) => {
 }
 // delete user
 const deleteUser = async (req,res) => {
-    let id = res.params.id
+    let id = req.params.id
     await connection.execute('DELETE FROM users WHERE id = ?',[id])
     return res.status(200).json({
         message: 'ok',
@@ -39,9 +39,12 @@ const deleteUser = async (req,res) => {
 const login = async (req, res) => {
     let {email,password} = req.body
     const [rows] = await connection.execute("SELECT * FROM users WHERE email = ? AND password = ?",[email,password])
-    if(rows.length == 1){
-        req.session.user = rows[0].role
-    }
+    return res.status(200).send(rows)
+}
+// find email
+const findEmail = async (req,res) => {
+    let {email} = req.body
+    const [rows] = await connection.execute("SELECT * FROM users WHERE email = ?",[email])
     return res.status(200).send(rows)
 }
 module.exports = {
@@ -50,5 +53,6 @@ module.exports = {
     getAllUser,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    findEmail
 }

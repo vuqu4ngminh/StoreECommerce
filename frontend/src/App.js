@@ -9,15 +9,19 @@ import Detail from "./pages/client/Detail";
 import Register from "./pages/client/Register";
 import Cart from "./pages/client/Cart";
 import Profile from "./pages/client/Profile";
+import Mobile from "./pages/admin/Mobile";
+import Order from "./pages/admin/Order";
+import User from "./pages/admin/User";
+import Statistics from "./pages/admin/Statistics";
+import AddUser from "./pages/admin/AddUser";
+import UpdateUser from "./pages/admin/UpdateUser";
 import NotFound from "./components/NotFound";
 import AdminLayout from "./pages/admin/AdminLayout";
 import UserLayout from './pages/client/UserLayout';
 import "./style.scss";
 import { Provider } from 'react-redux';
 import store from "./redux/Store";
-import UserList from "./pages/admin/UserList";
 import { ToastContainer } from "react-toastify";
-import Statistics from "./pages/admin/Statistics";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +67,7 @@ const router = createBrowserRouter([
         element: <NotFound />
       }
     ]
-  },{
+  }, {
     path: "admin",
     element: <AdminLayout />,
     children: [
@@ -73,7 +77,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'user',
-        element: <UserList />
+        element: <User />,
+      },
+      {
+        path: 'user/add',
+        element: <AddUser />
+      },
+      {
+        path: 'user/update/:id',
+        element: <UpdateUser />
+      },
+      {
+        path: 'mobile',
+        element: <Mobile />
+      },
+      {
+        path: 'order',
+        element: <Order />
       },
       {
         path: "*",
@@ -86,8 +106,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-    <div className="app">
-      <div className='container'>
+      <div className="app">
         <RouterProvider router={router} />
         <ToastContainer
           position="top-right"
@@ -99,7 +118,6 @@ function App() {
           pauseOnFocusLoss
         />
       </div>
-    </div>
     </Provider>
   );
 }

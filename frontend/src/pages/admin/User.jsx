@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import axios from 'axios';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from 'react-router-dom';
 
-const UserList = () => {
+const User = () => {
     const [users, setUsers] = useState([])
+    const deleteUser = async (id) => {
+        await axios.post(`http://localhost:8282/api/user/delete/${id}`)
+        toast.success('Xóa Thành Công')
+        setTimeout(() => window.location.reload(), 1500);
+    }
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get('http://localhost:8282/api/user')
             setUsers(res.data)
         }
         fetchData()
-    },[])
+    }, [])
     return (
-        <div className='adminPage'>
+        <div className='container'>
+            <h2 className='mt-5 mb-5'>Người Dùng</h2>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -21,7 +30,7 @@ const UserList = () => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
-                        <th><Button variant="success">Add User</Button></th>
+                        <th className='d-flex justify-content-center'><Link to={'/admin/user/add'} className='btn btn-success'>Add User</Link></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +42,8 @@ const UserList = () => {
                             <td>{user.phone}</td>
                             <td>{user.address}</td>
                             <td style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Button variant="primary">Edit</Button>{' '}
-                                <Button variant="danger">Delete</Button>
+                                <Link to={`/admin/user/update/${user.id}`} className='btn btn-primary'>Edit</Link>{' '}
+                                <Button onClick={() => deleteUser(user.id)} variant="danger">Delete</Button>
                             </td>
                         </tr>
                     ))}
@@ -44,4 +53,4 @@ const UserList = () => {
     );
 };
 
-export default UserList;
+export default User;

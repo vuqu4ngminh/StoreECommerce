@@ -7,6 +7,7 @@ const initUserAPIRoute = (app) => {
     router.post('/login', userController.login)
     router.get('/:id', userController.getUserById)
     router.get('/', userController.getAllUser)
+    router.post('/find/email', userController.findEmail)
     router.post('/update', userController.updateUser)
     router.post('/add', userController.addUser)
     router.post('/delete/:id', userController.deleteUser)
