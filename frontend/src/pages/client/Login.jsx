@@ -24,7 +24,7 @@ const Login = () => {
             localStorage.setItem("id", user[0].id);
             if(user[0].role === "admin"){
                 localStorage.setItem('role', "admin")
-                navigate('/admin/stats')
+                navigate('/admin/mobile')
             } else {
                 navigate('/profile')
             }

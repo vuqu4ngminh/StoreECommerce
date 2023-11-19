@@ -7,8 +7,9 @@ const initOrderAPIRoute = (app) => {
     router.get('/', orderController.getAllOrder)
     router.get('/:id', orderController.getOrderById)
     router.get('/detail/:id', orderController.getOrderByUserId)
-    router.post('/:id', orderController.updateOrder)
     router.post('/add', orderController.addOrder)
+    router.post('/:id', orderController.updateOrder)
+    
     return app.use('/api/order/', router)
 }
 

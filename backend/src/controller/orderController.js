@@ -49,8 +49,8 @@ const getAllOrder = async (req, res) => {
 // update order
 const updateOrder = async (req, res) => {
     let id = req.params.id
-    let status = req.body.status
-    await connection.execute('UPDATE orders SET status = ? WHERE id = ?', [status, id])
+    let s = req.body.status
+    await connection.execute('UPDATE orders SET status = ? WHERE id = ?', [s, id])
     return res.status(200).json({
         message: "ok",
     });

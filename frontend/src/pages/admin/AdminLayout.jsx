@@ -21,9 +21,6 @@ const AdminLayout = () => {
                 <h2 className='d-flex justify-content-center'>ADMIN</h2>
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item">
-                        <NavLink to={'/admin/stats'} className="nav-link" activeClassName="active" style={{color: "white"}}>Dashboard</NavLink>
-                    </li>
                     <li class="nav-item">
                         <NavLink to={'/admin/mobile'} className="nav-link" activeClassName="active" style={{color: "white"}}>Sản Phẩm</NavLink >
                     </li>
