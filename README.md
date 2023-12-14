@@ -2,14 +2,14 @@
 A simple SERN project
 
 ## Features:
-- [ ] Display list of Smartphone
-- [ ] Display infomations of a single Smartphone
-- [ ] User management (CRUD information)
-- [ ] Cart
-- [ ] Order
+- [x] Display list of Smartphone
+- [x] Display infomations of a single Smartphone
+- [x] User management (CRUD information)
+- [x] Cart
+- [x] Order
 - [ ] Statistics Page
-- [ ] Authentication
-- [ ] Order management for Administrator
-- [ ] Smartphone management for Administrator
-- [ ] User management for Administrator
+- [x] Authentication
+- [x] Order management for Administrator
+- [x] Smartphone management for Administrator
+- [x] User management for Administrator
 - [ ] Administrator Information management
